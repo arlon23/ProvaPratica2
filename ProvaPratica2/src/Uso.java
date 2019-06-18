@@ -8,7 +8,7 @@ public class Uso {
 		
 		Periodo periodo = new Periodo();
 		
-		Meta meta = new Meta("Teste", "Vamos testar uma descição nessa bagaça", periodo, 3);
+		Meta meta = new Meta("Teste", "Vamos testar se funcionou o git", periodo, 3);
 		
 		System.out.println(meta);
 
