@@ -10,7 +10,9 @@ public class Uso {
 		
 		Meta meta = new Meta("Teste", "Vamos testar se funcionou o git", periodo, 3);
 		
-		System.out.println(meta);
+		Lembrete lembrete = new Lembrete("Teste", "Vamos testar se funcionou o git", periodo,15);
+		
+		System.out.println(lembrete);
 
 	}
 
