@@ -126,6 +126,27 @@ public class Horario {
 		}
 	}
 	
+	public int compareTo(Horario horario) {
+		if (this.getHora() > horario.getHora()) {
+			return 1;
+		} else if (this.getHora() < horario.getHora()) {
+			return -1;
+		} else {
+			if (this.getMin() > horario.getMin()) {
+				return 1;
+			} else if (this.getMin() < horario.getMin()) {
+				return -1;
+			} else {
+				if (this.getSec() > horario.getSec()) {
+					return 1;
+				} else if (this.getSec() < horario.getSec()) {
+					return -1;
+				} else
+					return 0;
+			}
+		}
+	}
+	
 	public String toString(){
 		String concat = new StringBuilder().append(this.getHora()).append(":").append(this.getMin()).append(":").append(this.getSec()).toString();
     	return concat;
