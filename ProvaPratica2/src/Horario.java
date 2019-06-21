@@ -1,8 +1,8 @@
 import java.util.Calendar;
 
-public class Horario {
+public class Horario  {
 	
-	int hora, min, sec;
+	private int hora, min, sec;
 	
 	public Horario () {
 		try {
@@ -41,7 +41,7 @@ public class Horario {
 	}
 	
 	public static boolean  isHorarioValido (int hora, int min, int sec) {
-			if(((hora >= 0) && (hora < 25) ) && ( (min >= 0) && (min < 60)) && ( (sec >= 0) && (sec < 60))) {
+			if(((hora >= 0) && (hora < 24) ) && ( (min >= 0) && (min < 60)) && ( (sec >= 0) && (sec < 60))) {
 				return true;
 			}
 		return false;

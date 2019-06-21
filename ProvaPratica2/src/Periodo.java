@@ -1,5 +1,5 @@
 
-public class Periodo {
+public class Periodo  {
 	
 	Data dataInicio, dataFim;
 	Horario horarioInicio, horarioFim;

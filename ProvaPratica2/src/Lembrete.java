@@ -1,9 +1,7 @@
-import java.util.Calendar;
-import java.util.Date;
 
 public class Lembrete extends ItemAgenda {
 
-	int minAntec;
+	private int minAntec;
 	
 	public Lembrete () {
 		super();
@@ -45,10 +43,9 @@ public class Lembrete extends ItemAgenda {
 		try {
 			dataLembrete = new Data();
 			horario = new Horario();
-			horarioAntec = Lembrete.calculaHora(this.minAntec, this.periodo.horarioInicio);
-			System.out.println(horarioAntec);
-			if (this.periodo.dataInicio.equals(dataLembrete)) {
-				if((horario.compareTo(horarioAntec) == 1) && (horario.compareTo(this.periodo.horarioInicio) == -1)){
+			horarioAntec = Lembrete.calculaHora(this.minAntec, this.getPeriodo().horarioInicio);
+			if (this.getPeriodo().dataInicio.equals(dataLembrete)) {
+				if((horario.compareTo(horarioAntec) == 1) && (horario.compareTo(this.getPeriodo().horarioInicio) == -1)){
 					return true;
 				}else {
 					return false;
@@ -69,9 +66,9 @@ public class Lembrete extends ItemAgenda {
 	
 	@Override
 	public String toString() {
-		String concat = new StringBuilder().append("Lembrete: ").append(this.titulo).append("\nData Inicio: ").append(this.periodo.dataInicio)
-				.append("\nHorário Inicio: ").append(this.periodo.horarioInicio).append("\nDescrição: ").append(this.descricao).append("\n\n\nAviso de Antecedência: ").append(this.minAntec).append(" minutos.\nData Fim: ")
-				.append(this.periodo.dataFim).append("\nHorário Fim: ").append(this.periodo.horarioFim).toString();
+		String concat = new StringBuilder().append("Lembrete: ").append(this.getTitulo()).append("\nData Inicio: ").append(this.getPeriodo().dataInicio)
+				.append("\nHorário Inicio: ").append(this.getPeriodo().horarioInicio).append("\nDescrição: ").append(this.getDescricao()).append("\n\n\nAviso de Antecedência: ").append(this.minAntec).append(" minutos.\nData Fim: ")
+				.append(this.getPeriodo().dataFim).append("\nHorário Fim: ").append(this.getPeriodo().horarioFim).toString();
 		return concat;
 	}
 
