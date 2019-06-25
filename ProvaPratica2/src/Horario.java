@@ -40,6 +40,27 @@ public class Horario  {
 		}
 	}
 	
+	public Horario (String hora) {
+		String[] horaI = hora.split(":");
+		int hora2[] = Horario.quebraHora(horaI);
+		try {
+			this.setHorario(hora2[0], hora2[1], hora2[2]);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static int[] quebraHora(String[] horaI) {
+		int horaIn[] = new int[3];
+
+		for (int i = 0; i<horaI.length; i++) {
+			horaIn[i] = Integer.parseInt(horaI[i]);
+		}
+		
+		return horaIn;
+	}
+	
 	public static boolean  isHorarioValido (int hora, int min, int sec) {
 			if(((hora >= 0) && (hora < 24) ) && ( (min >= 0) && (min < 60)) && ( (sec >= 0) && (sec < 60))) {
 				return true;
@@ -74,6 +95,8 @@ public class Horario  {
 	public void setSec(int sec) {
 		this.sec = sec;
 	}
+	
+	
 	
 	public void setHorario() throws Exception {
 		Calendar day = Calendar.getInstance();

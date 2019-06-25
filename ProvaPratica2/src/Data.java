@@ -41,6 +41,8 @@ public class Data {
 				return true;
 			} else if (((dia == 29) && (mes == 2)) && isBissexto(ano)) {
 				return true;
+			} else if (((dia < 29) && (mes == 2)) && !isBissexto(ano)) {
+				return true;
 			} else if ((dia < 31) && ((mes == 4) || (mes == 6) || (mes == 9) || (mes == 11) || (mes == 1) || (mes == 3)
 					|| (mes == 5) || (mes == 7) || (mes == 8) || (mes == 10) || (mes == 12))) {
 				return true;

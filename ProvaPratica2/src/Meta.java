@@ -1,5 +1,6 @@
+import java.util.Comparator;
 
-public class Meta extends ItemAgenda {
+public class Meta extends ItemAgenda implements Comparable<ItemAgenda>{
 
 	private int prioridade;
 	
@@ -23,14 +24,6 @@ public class Meta extends ItemAgenda {
 		this.setPrioridade(prioridade);
 	}
 	
-	@Override
-	public String toString() {
-		String concat = new StringBuilder().append("Meta: ").append(this.getTitulo()).append("\nData Inicio: ").append(this.getPeriodo().dataInicio)
-				.append("\nHorário Inicio: ").append(this.getPeriodo().horarioInicio).append("\nDescrição: ").append(this.getDescricao()).append("\n\n\nData Fim: ")
-				.append(this.getPeriodo().dataFim).append("\nHorário Fim: ").append(this.getPeriodo().horarioFim).toString();
-		return concat;
-	}
-
 	public int getPrioridade() {
 		return prioridade;
 	}
@@ -39,4 +32,25 @@ public class Meta extends ItemAgenda {
 		this.prioridade = prioridade;
 	}
 
+
+	@Override
+	public int compareTo(ItemAgenda o) {
+		// TODO Auto-generated method stub
+		Meta meta = (Meta)o;
+		if(this.prioridade > meta.getPrioridade()) return 1;
+		else if (this.prioridade < meta.getPrioridade()) return -1;
+		else return 0;
+	}
+	
+	@Override
+	public String toString() {
+		String concat = new StringBuilder().append("Nível Prioridade: ").append(this.prioridade).append("\nMeta: ").append(this.getTitulo()).append("\nData Inicio: ").append(this.getPeriodo().dataInicio)
+				.append("\nHorário Inicio: ").append(this.getPeriodo().horarioInicio).append("\nDescrição: ").append(this.getDescricao()).append("\n\nData Fim: ")
+				.append(this.getPeriodo().dataFim).append("\nHorário Fim: ").append(this.getPeriodo().horarioFim).append("\n\n\n").toString();
+		return concat;
+	}
+
+	
+
 }
+

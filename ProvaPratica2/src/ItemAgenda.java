@@ -1,4 +1,4 @@
-
+import java.util.Comparator;
 
 public abstract class ItemAgenda {
 	private String titulo, descricao;
@@ -46,6 +46,48 @@ public abstract class ItemAgenda {
 
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
+	}
+
+}
+
+
+class Prioridade implements Comparator<ItemAgenda> {
+	public int compare(ItemAgenda itemAgenda1, ItemAgenda itemAgenda2) {
+		if(itemAgenda1.getClass() == Meta.class && itemAgenda2.getClass() == Meta.class) {
+			Meta meta1 = (Meta) itemAgenda1, meta2 = (Meta) itemAgenda2;
+			int prioridadeMeta1 = meta1.getPrioridade(), prioridadeMeta2 = meta2.getPrioridade();
+			if (prioridadeMeta1 > prioridadeMeta2) {
+				return 1;
+			}
+			else if (prioridadeMeta1 < prioridadeMeta2) {
+				return -1;
+			}
+			else {
+				return 0;
+			}
+		}
+		
+		else if(itemAgenda1.getClass() == Lembrete.class && itemAgenda2.getClass() == Lembrete.class) {
+			Lembrete lembrete1 = (Lembrete) itemAgenda1, lembrete2 = (Lembrete) itemAgenda2;
+			int minAntec1 = lembrete1.getMinAntec(), minAntec2 = lembrete2.getMinAntec();
+			if (minAntec1 > minAntec2) {
+				return 1;
+			}
+			else if (minAntec1 < minAntec2) {
+				return -1;
+			}
+			else {
+				return 0;
+			}
+		}
+		
+		else if(itemAgenda1.getClass() == Evento.class && itemAgenda2.getClass() == Evento.class) {
+			Evento evento1 = (Evento) itemAgenda1;
+			Evento evento2 = (Evento) itemAgenda2;
+			return evento1.getLocal().compareToIgnoreCase(evento2.getLocal());
+		
+		}
+		else return 0;
 	}
 
 }

@@ -1,5 +1,5 @@
 
-public class Lembrete extends ItemAgenda {
+public class Lembrete extends ItemAgenda implements Comparable<ItemAgenda>{
 
 	private int minAntec;
 	
@@ -64,12 +64,31 @@ public class Lembrete extends ItemAgenda {
 		return false;
 	}
 	
+	public int getMinAntec() {
+		return minAntec;
+	}
+
+	public void setMinAntec(int minAntec) {
+		this.minAntec = minAntec;
+	}
+	
+	@Override
+	public int compareTo(ItemAgenda o) {
+		// TODO Auto-generated method stub
+		Lembrete lembrete = (Lembrete)o;
+		if(this.minAntec > lembrete.getMinAntec()) return 1;
+		else if (this.minAntec < lembrete.getMinAntec()) return -1;
+		else return 0;
+	}
+
 	@Override
 	public String toString() {
 		String concat = new StringBuilder().append("Lembrete: ").append(this.getTitulo()).append("\nData Inicio: ").append(this.getPeriodo().dataInicio)
-				.append("\nHorário Inicio: ").append(this.getPeriodo().horarioInicio).append("\nDescrição: ").append(this.getDescricao()).append("\n\n\nAviso de Antecedência: ").append(this.minAntec).append(" minutos.\nData Fim: ")
-				.append(this.getPeriodo().dataFim).append("\nHorário Fim: ").append(this.getPeriodo().horarioFim).toString();
+				.append("\nHorário Inicio: ").append(this.getPeriodo().horarioInicio).append("\nDescrição: ").append(this.getDescricao()).append("\n\nAviso de Antecedência: ").append(this.minAntec).append(" minutos.\nData Fim: ")
+				.append(this.getPeriodo().dataFim).append("\nHorário Fim: ").append(this.getPeriodo().horarioFim).append("\n\n\n").toString();
 		return concat;
 	}
+
+	
 
 }
