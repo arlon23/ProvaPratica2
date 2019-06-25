@@ -1,7 +1,12 @@
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Horario  {
+public class Horario  implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int hora, min, sec;
 	
 	public Horario () {

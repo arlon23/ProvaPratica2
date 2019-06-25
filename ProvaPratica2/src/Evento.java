@@ -1,6 +1,11 @@
+import java.io.Serializable;
 
-public class Evento extends ItemAgenda implements Comparable<ItemAgenda>{
+public class Evento extends ItemAgenda implements Comparable<ItemAgenda>, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String local;
 	
 	public Evento () {

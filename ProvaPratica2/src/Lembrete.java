@@ -1,6 +1,11 @@
+import java.io.Serializable;
 
-public class Lembrete extends ItemAgenda implements Comparable<ItemAgenda>{
+public class Lembrete extends ItemAgenda implements Comparable<ItemAgenda>, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int minAntec;
 	
 	public Lembrete () {

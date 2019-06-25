@@ -1,7 +1,11 @@
-import java.util.Comparator;
+import java.io.Serializable;
 
-public class Meta extends ItemAgenda implements Comparable<ItemAgenda>{
+public class Meta extends ItemAgenda implements Comparable<ItemAgenda>, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int prioridade;
 	
 	public Meta () {

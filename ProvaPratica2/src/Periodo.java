@@ -1,6 +1,11 @@
+import java.io.Serializable;
 
-public class Periodo  {
+public class Periodo  implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Data dataInicio, dataFim;
 	Horario horarioInicio, horarioFim;
 	

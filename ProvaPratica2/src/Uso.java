@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class Uso {
 	private static Scanner entrada;
 	public static void main(String[] args) {
@@ -66,7 +68,6 @@ public class Uso {
 								e.printStackTrace();
 							}
 							
-							Lembrete lembrete = new Lembrete();
 							break;
 						case 2:
 							
@@ -118,59 +119,69 @@ public class Uso {
 							break;
 					}
 				}else {
-					System.out.println("|;;;;;;;; Vizualização ;;;;;;;;|");
-					System.out.println("| 1 - Toda a agenda            |");
-					System.out.println("| 2 - Agenda por intervalo     |");
-					System.out.println("| 3 - Metas ordenadas          |");
-					System.out.println("| 4 - Lembretes ordenados      |");
-					System.out.println("| 5 - Eventos ordenados        |");
-					System.out.println("| 6 - Sair                     |");
+					if(agenda.getSize() > 0 && Agenda.leArquivo("Agenda") != null) {
+						agenda.atualizarAgenda();
+					}else if (agenda.getSize() > 0 && Agenda.leArquivo("Agenda") == null) {
+						Agenda.salvarArquivo(agenda, "Agenda");
+					}else break;
 					
-					op2 = entrada.nextInt();
 					
-					switch(op2) {
-						case 1:
-							System.out.println(agenda.toString());
-							break;
-						case 2:
-							System.out.print("Intervalo de Inicio: ");
-							entrada = new Scanner(System.in);
-							dataInicio = entrada.nextLine();
-							System.out.print("Intervalo de Fim: ");
-							entrada = new Scanner(System.in);
-							dataFim = entrada.nextLine();
-							
+						System.out.println("|;;;;;;;; Vizualização ;;;;;;;;|");
+						System.out.println("| 1 - Toda a agenda            |");
+						System.out.println("| 2 - Agenda por intervalo     |");
+						System.out.println("| 3 - Metas ordenadas          |");
+						System.out.println("| 4 - Lembretes ordenados      |");
+						System.out.println("| 5 - Eventos ordenados        |");
+						System.out.println("| 6 - Sair                     |");
 						
-						try {
-							Data intervaloIn = new Data(dataInicio);							
-							Data intervaloF = new Data(dataFim);
+						op2 = entrada.nextInt();
+						
+						switch(op2) {
+							case 1:
+								System.out.println(agenda.toString());
+								break;
+							case 2:
+								System.out.print("Intervalo de Inicio: ");
+								entrada = new Scanner(System.in);
+								dataInicio = entrada.nextLine();
+								System.out.print("Intervalo de Fim: ");
+								entrada = new Scanner(System.in);
+								dataFim = entrada.nextLine();
+								
 							
-							System.out.println(Agenda.listarPorPeriodo(agenda, intervaloIn, intervaloF));
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							try {
+								Data intervaloIn = new Data(dataInicio);							
+								Data intervaloF = new Data(dataFim);
+								
+								System.out.println(Agenda.listarPorPeriodo(intervaloIn, intervaloF));
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+								
+								
+								
+								break;
+							case 3:
+								System.out.println(Agenda.ordenar("Agenda", op2));
+								break;
+							case 4:
+								System.out.println(Agenda.ordenar("Agenda", op2));
+								break;
+							case 5:
+								System.out.println(Agenda.ordenar("Agenda", op2));
+								break;
+							default:
+								break;
 						}
-							
-							
-							
-							break;
-						case 3:
-							System.out.println(Agenda.ordenar(agenda, op2));
-							break;
-						case 4:
-							System.out.println(Agenda.ordenar(agenda, op2));
-							break;
-						case 5:
-							System.out.println(Agenda.ordenar(agenda, op2));
-							break;
-						default:
-							break;
-					}
+//					}else {
+//						JOptionPane.showMessageDialog(null, "Arquivo Agenda Vazio");
+//					}
 					
 				}
 				
-			}while(op2 != 10);
-		}while(op1 != 10);
+			}while(op2 != 6);
+		}while(op1 != 5);
 
 		
 

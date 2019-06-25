@@ -1,6 +1,11 @@
+import java.io.Serializable;
 import java.util.Comparator;
 
-public abstract class ItemAgenda {
+public abstract class ItemAgenda implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String titulo, descricao;
 	private Periodo periodo;
 	
