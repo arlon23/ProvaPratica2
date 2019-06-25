@@ -1,6 +1,11 @@
 import java.io.Serializable;
 import java.util.Comparator;
 
+
+/**Classe abstrata para os Itens da agenda.
+* @author Arlon Scheidegger
+* @version 1.0
+*/
 public abstract class ItemAgenda implements Serializable{
 	/**
 	 * 
@@ -9,17 +14,40 @@ public abstract class ItemAgenda implements Serializable{
 	private String titulo, descricao;
 	private Periodo periodo;
 	
+	/**Contrutor padrão do ItemAgenda, onde as variáveis são setadas como String vazia e o periodo com valor default.
+	* @author Arlon Scheidegger
+	*/
+	
+	
 	public ItemAgenda () {
 		this.titulo = "";
 		this.setDescricao("");
 		this.periodo = new Periodo();
 	}
 	
+	/**Contrutor completo com todas as informações necessárias para criação de um ItemAgenda.
+	* @author Arlon Scheidegger
+	* @param titulo String - Titulo do ItemAgenda.
+	* @param descricao String - Descricao do ItemAgenda.
+	* @param periodo Periodo - Periodo do ItemAgenda.
+	*/
+	
 	public ItemAgenda (String titulo, String descricao, Periodo periodo) {
 		this.titulo = titulo;
 		this.setDescricao(descricao);
 		this.periodo = periodo;
 	}
+	
+	/**Contrutor completo com todas as informações necessárias, e as informações do período de forma detalhada.
+	* @author Arlon Scheidegger
+	* @param titulo String - Titulo do ItemAgenda.
+	* @param descricao String - Descricao do ItemAgenda.
+	* @param dataInicio Data - Data de inicio do Periodo.
+	* @param horarioInicio Horario - Horario de inicio do Periodo.
+	* @param dataInicio Data - Data de fim do Periodo.
+	* @param dataInicio Data - Horário de fim do Periodo.
+	* @return ItemAgenda
+	*/
 	
 	public ItemAgenda (String titulo, String descricao, Data dataInicio, Data dataFim, Horario horarioInicio, Horario horarioFim) {
 		this.titulo = titulo;
@@ -55,6 +83,14 @@ public abstract class ItemAgenda implements Serializable{
 
 }
 
+
+/**Classe para comparar e dois elementos de um objeto do tipo ItemAgenda
+* @author Arlon Scheidegger
+* @param itemAgenda1 ItemAgenda - Elemento do tipo ItemAgenda para comparação
+* @param itemAgenda2 ItemAgenda - Elemento do tipo ItemAgenda para comparação
+* @return int
+* @version 1.0
+*/
 
 class Prioridade implements Comparator<ItemAgenda> {
 	public int compare(ItemAgenda itemAgenda1, ItemAgenda itemAgenda2) {

@@ -1,6 +1,11 @@
 import java.io.Serializable;
 import java.util.Calendar;
 
+/**Classe para objetos do tipo Horario, onde são contidos a hora, minutos e segundos e os métodos para o mesmo.
+* @author Arlon Scheidegger
+* @version 1.0
+*/
+
 public class Horario  implements Serializable{
 	
 	/**
@@ -8,6 +13,11 @@ public class Horario  implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int hora, min, sec;
+	
+	
+	/**Construtor para inicialização default, onde horário é inicializado com o horário atual da máquina.
+	* @author Arlon Scheidegger
+	*/
 	
 	public Horario () {
 		try {
@@ -18,6 +28,11 @@ public class Horario  implements Serializable{
 		}
 	}
 	
+	/**Construtor com entrada apenas da hora, sendo o restante das informações inicializadas com valor 0
+	* @author Arlon Scheidegger
+	* @param  hora int - Valor da hora para ser inicializada.
+	*/
+	
 	public Horario (int hora) {
 		try {
 			this.setHorario(hora);
@@ -26,6 +41,12 @@ public class Horario  implements Serializable{
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	/**Construtor com entrada apenas da hora e min, sendo o restante das informações inicializadas com valor 0
+	* @author Arlon Scheidegger
+	* @param  hora int - Valor da hora para ser inicializada.
+	* @param  min int - Valor do minuto para ser inicializado.
+	*/
 	
 	public Horario (int hora, int min) {
 		try {
@@ -36,6 +57,13 @@ public class Horario  implements Serializable{
 		}
 	}
 	
+	/**Construtor completo para inicialização
+	* @author Arlon Scheidegger
+	* @param  hora int - Valor da hora para ser inicializada.
+	* @param  min int - Valor do minuto para ser inicializado.
+	* @param  sec int - Valor do segundo para ser inicializado.
+	*/
+	
 	public Horario (int hora, int min, int sec) {
 		try {
 			this.setHorario(hora, min, sec);
@@ -44,6 +72,11 @@ public class Horario  implements Serializable{
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	/**Construtor para entrada do horário como String - modelo (XX:XX:XX)
+	* @author Arlon Scheidegger
+	* @param  hora String - Valor da hora no modelo mostrado acima para ser inicializado.
+	*/
 	
 	public Horario (String hora) {
 		String[] horaI = hora.split(":");
@@ -56,6 +89,12 @@ public class Horario  implements Serializable{
 		}
 	}
 	
+	/**Método estático para transformar um vetor de String em um vetor de inteiros
+	* @author Arlon Scheidegger
+	* @param  horaI StringI - Vetor com a hora separado em cada posição horaI[0] = hora, horaI[1] = min, horaI[2] = sec.
+	* @return int[]
+	*/
+	
 	public static int[] quebraHora(String[] horaI) {
 		int horaIn[] = new int[3];
 
@@ -66,6 +105,14 @@ public class Horario  implements Serializable{
 		return horaIn;
 	}
 	
+	/**Método estático para verificar se uma hora é válida.
+	* @author Arlon Scheidegger
+	* @param  hora int - Hora para verificação
+	* @param  min int - Minutos para verificação
+	* @param  sec int - Segundos para verificação
+	* @return boolean
+	*/
+	
 	public static boolean  isHorarioValido (int hora, int min, int sec) {
 			if(((hora >= 0) && (hora < 24) ) && ( (min >= 0) && (min < 60)) && ( (sec >= 0) && (sec < 60))) {
 				return true;
@@ -73,8 +120,13 @@ public class Horario  implements Serializable{
 		return false;
 	}
 	
-	public boolean isHorarioValido(Horario horario) {
-		return Horario.isHorarioValido(horario.getHora(), horario.getMin(), horario.getSec());
+	/**Método para verificar se uma hora é válida.
+	* @author Arlon Scheidegger
+	* @return boolean
+	*/
+	
+	public boolean isHorarioValido() {
+		return Horario.isHorarioValido(this.getHora(), this.getMin(), this.getSec());
 	}
 
 	public int getHora() {
@@ -145,14 +197,27 @@ public class Horario  implements Serializable{
 		}
 	}
 	
-	public boolean equals(Horario data) {
+	/**Método para verificar se dois horários são iguais.
+	* @author Arlon Scheidegger
+	* @param  horario Horario - Hora para verificação
+	* @return boolean
+	*/
+	
+	public boolean equals(Horario horario) {
 
-		if ((this.getHora() == data.getHora()) && (this.getMin() == data.getMin()) && (this.getSec() == data.getSec())) {
+		if ((this.getHora() == horario.getHora()) && (this.getMin() == horario.getMin()) && (this.getSec() == horario.getSec())) {
 			return true;
 		} else {
 			return false;
 		}
 	}
+	
+	/**Método para verificar se dois horários são iguais, menor ou maior.
+	* @author Arlon Scheidegger
+	* @param  horario Horario - Hora para verificação
+	* @return int
+	*/
+	
 	
 	public int compareTo(Horario horario) {
 		if (this.getHora() > horario.getHora()) {

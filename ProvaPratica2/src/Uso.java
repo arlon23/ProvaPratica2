@@ -2,6 +2,10 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+/**Classe uso para inserção dos dados para instanciar todas as informações.
+* @author Arlon Felipe Scheidegger de Aguiar
+* @version 1.0
+*/
 public class Uso {
 	private static Scanner entrada;
 	public static void main(String[] args) {
@@ -119,6 +123,10 @@ public class Uso {
 							break;
 					}
 				}else {
+					/**Verificação para ver se é necessário criar ou não um arquivo, e se for para criar
+					 * verifica se é para atualizar.
+					* @author Arlon Scheidegger
+					*/
 					if(agenda.getSize() > 0 && Agenda.leArquivo("Agenda") != null) {
 						agenda.atualizarAgenda();
 					}else if (agenda.getSize() > 0 && Agenda.leArquivo("Agenda") == null) {

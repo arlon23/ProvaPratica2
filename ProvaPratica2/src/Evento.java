@@ -1,5 +1,10 @@
 import java.io.Serializable;
 
+/**Classe filha da classe ItemAgenda, onde está contido o local e os métodos.
+* @author Arlon Scheidegger
+* @version 1.0
+*/
+
 public class Evento extends ItemAgenda implements Comparable<ItemAgenda>, Serializable{
 
 	/**
@@ -8,15 +13,40 @@ public class Evento extends ItemAgenda implements Comparable<ItemAgenda>, Serial
 	private static final long serialVersionUID = 1L;
 	String local;
 	
+	/**Construtor default do objeto tipo Evento, onde é utilizado o contrutor default no ItemAgenda
+	* e o local do evento é inicializado com vazio.
+	* @author Arlon Scheidegger
+	*/
+	
 	public Evento () {
 		super();
 		this.local = "";
 	}
 	
+	/**Construtor completo do evento com a entrada do Periodo instanciado
+	* @author Arlon Scheidegger
+	* @param titulo String - Nome do título da meta.
+	* @param descricao String - Descrição da meta.
+	* @param periodo Periodo - Periodo da meta.
+	* @param local String - Local do evento.
+	*/
+	
+	
 	public Evento (String titulo, String descricao, Periodo periodo, String local) {
 		super(titulo, descricao, periodo);
 		this.local = local;
 	}
+	
+	/**Construtor completo da meta com a entrada do Periodo sem ser instanciado
+	* @author Arlon Scheidegger
+	* @param titulo String - Nome do título da meta.
+	* @param descricao String - Descrição da meta.
+	* @param dataInicio Data - Data de início do período.
+	* @param horarioInicio Horario - Horario de início do período.
+	* @param dataFim Data - Data de fim do período.
+	* @param horarioFim Horario - Horario de fim do período.
+	* @param local String - Local do evento.
+	*/
 	
 	public Evento (String titulo, String descricao, Data dataInicio, Data dataFim, Horario horarioInicio, Horario horarioFim, String local) {
 		super(titulo, descricao, dataInicio, dataFim, horarioInicio, horarioFim);
@@ -30,6 +60,12 @@ public class Evento extends ItemAgenda implements Comparable<ItemAgenda>, Serial
 	public void setLocal(String local) {
 		this.local = local;
 	}
+	
+	/**Método para comparar dois Eventos se são iguais, menor ou maior.
+	* @author Arlon Scheidegger
+	* @param o ItemAgenda - Variável do tipo ItemAgenda onde será feito um casting para Evento e fazer a verificação.
+	* @return boolean
+	*/
 	
 	@Override
 	public int compareTo(ItemAgenda o) {
